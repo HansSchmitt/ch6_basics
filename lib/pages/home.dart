@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ch6_basics/widgets/containerWithBoxDecorationWidget.dart';
 import 'package:ch6_basics/widgets/columnWidget.dart';
+import 'package:ch6_basics/widgets/rowWidget.dart';
+import 'package:ch6_basics/widgets/columnAndRowNestingWidget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -41,13 +43,13 @@ class _HomeState extends State<Home> {
               bottom: PreferredSize(
                 child: Container(
                   color: Colors.lightGreen.shade100,
-                  height: 75.0,
+                  height: 25.0,
                   width: double.infinity,
                   child: Center(
                     child: Text('Bottom App Bar'),
                   ),
                 ),
-                preferredSize: Size.fromHeight(75.0),
+                preferredSize: Size.fromHeight(25.0),
               ),
             ),
             body: Padding(
@@ -58,12 +60,82 @@ class _HomeState extends State<Home> {
                     const ContainerWithBoxDecorationWidget(),
                     Divider(),
                     const ColumnWidget(),
+                    Divider(),
+                    const RowWidget(),
+                    Divider(),
+                    const ColumnAndRowNestingWidget(),
+                    Divider(),
+                    const FlatButtonRow(),
+                    Divider(),
+                    const RaisedButtonRow(),
                   ],
                 ),
               ),
             ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.airplay),
+          backgroundColor: Colors.lightGreen.shade100,
+        ),
       ),
     );
   }
 }
+
+class FlatButtonRow extends StatelessWidget {
+  const FlatButtonRow({
+    Key key
+}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        FlatButton(
+          onPressed: null,
+          child: Text('Flag'),
+        ),
+        FlatButton(
+          onPressed: null,
+          child: Icon(Icons.flag,),
+          color: Colors.lightGreen,
+          disabledColor: Colors.lightGreen,
+        )
+      ],
+    );
+  }
+}
+
+class RaisedButtonRow extends StatelessWidget {
+  const RaisedButtonRow({
+    Key key
+}): super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        RaisedButton(
+          onPressed: null,
+          child: Text('Save'),
+        ),
+        RaisedButton(
+          onPressed: null,
+          child: Icon(Icons.save,),
+          color: Colors.lightGreen,
+          disabledColor: Colors.lightGreen,
+        )
+      ],
+    );
+  }
+}
+
+
+
+
+
+
 
