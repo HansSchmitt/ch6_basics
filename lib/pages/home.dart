@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ch6_basics/widgets/containerWithBoxDecorationWidget.dart';
-import 'package:ch6_basics/widgets/columnWidget.dart';
-import 'package:ch6_basics/widgets/rowWidget.dart';
-import 'package:ch6_basics/widgets/columnAndRowNestingWidget.dart';
+import 'package:ch6_basics/widgets/container_with_box_decoration_widget.dart';
+import 'package:ch6_basics/widgets/column_widget.dart';
+import 'package:ch6_basics/widgets/row_widget.dart';
+import 'package:ch6_basics/widgets/column_and_row_nesting_widget.dart';
+import 'package:ch6_basics/widgets/flat_button_row.dart';
+import 'package:ch6_basics/widgets/raised_button_row.dart';
+import 'package:ch6_basics/widgets/icon_button_row.dart';
+import 'package:ch6_basics/widgets/popup_menu_button_widget.dart';
+import 'package:ch6_basics/widgets/button_bar_widget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -36,21 +41,10 @@ class _HomeState extends State<Home> {
               ],
               flexibleSpace: SafeArea(
                 child: Icon(
-                  Icons.photo_camera, size: 75.0, color: Colors.white70
-                  ,
+                  Icons.photo_camera, size: 75.0, color: Colors.white70,
                 ),
               ),
-              bottom: PreferredSize(
-                child: Container(
-                  color: Colors.lightGreen.shade100,
-                  height: 25.0,
-                  width: double.infinity,
-                  child: Center(
-                    child: Text('Bottom App Bar'),
-                  ),
-                ),
-                preferredSize: Size.fromHeight(25.0),
-              ),
+              bottom: PopUpMenuButtonWidget(),
             ),
             body: Padding(
               padding: EdgeInsets.all(16.0),
@@ -68,6 +62,10 @@ class _HomeState extends State<Home> {
                     const FlatButtonRow(),
                     Divider(),
                     const RaisedButtonRow(),
+                    Divider(),
+                    const IconButtonRow(),
+                    Divider(),
+                    const ButtonBarWidget(),
                   ],
                 ),
               ),
@@ -82,60 +80,6 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-class FlatButtonRow extends StatelessWidget {
-  const FlatButtonRow({
-    Key key
-}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        FlatButton(
-          onPressed: null,
-          child: Text('Flag'),
-        ),
-        FlatButton(
-          onPressed: null,
-          child: Icon(Icons.flag,),
-          color: Colors.lightGreen,
-          disabledColor: Colors.lightGreen,
-        )
-      ],
-    );
-  }
-}
-
-class RaisedButtonRow extends StatelessWidget {
-  const RaisedButtonRow({
-    Key key
-}): super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        RaisedButton(
-          onPressed: null,
-          child: Text('Save'),
-        ),
-        RaisedButton(
-          onPressed: null,
-          child: Icon(Icons.save,),
-          color: Colors.lightGreen,
-          disabledColor: Colors.lightGreen,
-        )
-      ],
-    );
-  }
-}
-
-
-
-
 
 
 
